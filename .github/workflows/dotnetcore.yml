@@ -24,4 +24,9 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release
     - name: Dir
-      run: dir .
+      run: 
+        dir .
+        dir Configuration.Database
+        dir Configuration.Database\bin
+        dir Configuration.Database\bin\Release
+        dir Configuration.Database\bin\Release\netcoreapp3.1
