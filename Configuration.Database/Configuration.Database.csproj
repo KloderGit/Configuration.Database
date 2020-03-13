@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>KloderGit</Authors>
+    <Company />
+    <Product />
+    <Copyright>KloderGit</Copyright>
+    <PackageProjectUrl>https://github.com/KloderGit/Configuration.Database</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/KloderGit/Configuration.Database</RepositoryUrl>
+    <RepositoryType>public</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
