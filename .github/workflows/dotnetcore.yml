@@ -22,7 +22,7 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release
     - name: Dir
-      run: dir Configuration.Database\bin\Release\netcoreapp3.1
+      run: dir Configuration.Database\bin\Release\
       
     - name: Setup Nuget.exe
       uses: warrenbuckley/Setup-Nuget@v1
@@ -34,7 +34,7 @@ jobs:
       run: nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/KloderGit/index.json" -UserName KloderGit -Password ${{ secrets.GITHUB_TOKEN }}
 
     - name: Push
-      run: dotnet nuget push Configuration.Database\bin\Release\Configuration.Database.1.0.0.nupkg -k ${{ secrets.GITHUB_TOKEN }}  -s https://nuget.pkg.github.com/KloderGit/Configuration.Database/index.json
+      run: dotnet nuget push Configuration.Database\bin\Release\Configuration.Database.1.0.0.nupkg -k ${{ secrets.GITHUB_TOKEN }}  -s GitHub
 
 
 #    - name: Nuget Push
