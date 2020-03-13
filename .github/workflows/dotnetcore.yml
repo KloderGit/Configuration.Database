@@ -21,5 +21,9 @@ jobs:
       run: dotnet build --configuration Release
     - name: Pack
       run: dotnet pack --configuration Release
-    - name: Publish to Package
-      run: dotnet nuget push "bin/Release/Configuration.Database.1.0.0.nupkg" --source "github"
+      
+    - name: Setup Nuget.exe
+      uses: warrenbuckley/Setup-Nuget@v1
+
+    - name: Nuget Push
+      run: nuget --version
