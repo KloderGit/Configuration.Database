@@ -31,7 +31,7 @@ jobs:
       run: nuget ? v
       
     - name: Add Source
-      run: nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/KloderGit/Configuration.Database/index.json" -UserName KloderGit -Password ${{ secrets.GITHUB_TOKEN }}
+      run: nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/KloderGit/index.json" -UserName KloderGit -Password ${{ secrets.GITHUB_TOKEN }}
 
     - name: Nuget Push
       run: nuget push "Configuration.Database\bin\Release\Configuration.Database.1.0.0.nupkg" -Source "GitHub"
