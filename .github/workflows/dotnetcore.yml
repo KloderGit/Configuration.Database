@@ -24,7 +24,7 @@ jobs:
     - name: Dir
       run: dir Configuration.Database\bin\Release\netcoreapp3.1
     - name: Nuget Setup
-      run: warrenbuckley/Setup-Nuget@v1
+      run: nuget/setup-nuget@v1
     - name: Ng Vers
       run: nuget ? v
       
