@@ -23,13 +23,15 @@ jobs:
       run: dotnet pack --configuration Release
     - name: Dir
       run: dir Configuration.Database\bin\Release\netcoreapp3.1
-    - name: Nuget Setup
-      run: nuget/setup-nuget@v1
+      
+    - name: Setup Nuget.exe
+      uses: warrenbuckley/Setup-Nuget@v1
+
     - name: Ng Vers
       run: nuget ? v
       
-    - name: Add GPR Source using nuget.exe
-      run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/KloderGit/index.json -Username KloderGit -Password ${{ secrets.GITHUB_TOKEN }} 
+#    - name: Add GPR Source using nuget.exe
+#      run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/KloderGit/index.json -Username KloderGit -Password ${{ secrets.GITHUB_TOKEN }} 
     
-    - name: nuget push
-      run: nuget push Configuration.Database\bin\Release\*.nupkg -source "GPR" -SkipDuplicate
+#    - name: nuget push
+#      run: nuget push Configuration.Database\bin\Release\*.nupkg -source "GPR" -SkipDuplicate
