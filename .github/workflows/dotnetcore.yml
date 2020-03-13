@@ -34,7 +34,7 @@ jobs:
       run: nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/KloderGit/index.json" -UserName KloderGit -Password ${{ secrets.GITHUB_TOKEN }}
 
     - name: Push
-      run: dotnet nuget push Configuration.Database\bin\Release\Configuration.Database.1.0.0.nupkg -k fed04152bbf133492a73a75b519802331e5e830d -s https://nuget.pkg.github.com/KloderGit/index.json
+      run: dotnet nuget push Configuration.Database\bin\Release\Configuration.Database.1.0.0.nupkg -k ${{ secrets.GITHUB_TOKEN }}  -s https://nuget.pkg.github.com/KloderGit/Configuration.Database/index.json
 
 
 #    - name: Nuget Push
