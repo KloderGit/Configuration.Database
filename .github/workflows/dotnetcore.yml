@@ -33,8 +33,12 @@ jobs:
     - name: Add Source
       run: nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/KloderGit/index.json" -UserName KloderGit -Password ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Nuget Push
-      run: nuget push "Configuration.Database\bin\Release\Configuration.Database.1.0.0.nupkg" -Source "GitHub"
+    - name: Push
+      run: dotnet nuget push Configuration.Database\bin\Release\Configuration.Database.1.0.0.nupkg -k fed04152bbf133492a73a75b519802331e5e830d -s https://nuget.pkg.github.com/KloderGit/index.json
+
+
+#    - name: Nuget Push
+#      run: nuget push "Configuration.Database\bin\Release\Configuration.Database.1.0.0.nupkg" -Source "GitHub"
 
 #    - name: Add GPR Source using nuget.exe
 #      run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/KloderGit/index.json -Username KloderGit -Password ${{ secrets.GITHUB_TOKEN }} 
