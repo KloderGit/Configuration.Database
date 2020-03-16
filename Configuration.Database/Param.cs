@@ -10,7 +10,6 @@ namespace Configuration.Database
         public bool Active { get; set; } = true;
         public int? AssemblyId { get; set; }
         public Assembly Assembly { get; set; }
-        public Enviroment? Enviroment { get; set; }
         public string Key { get; set; }
         public string Value { get; set; }
     }

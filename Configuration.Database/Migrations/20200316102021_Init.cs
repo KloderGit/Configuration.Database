@@ -7,13 +7,18 @@ namespace Configuration.Database.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "Service");
+
             migrationBuilder.CreateTable(
                 name: "Assemblies",
+                schema: "Service",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: false),
+                    Type = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -22,13 +27,13 @@ namespace Configuration.Database.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Params",
+                schema: "Service",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Active = table.Column<bool>(nullable: false),
                     AssemblyId = table.Column<int>(nullable: true),
-                    Enviroment = table.Column<int>(nullable: true),
                     Key = table.Column<string>(nullable: false),
                     Value = table.Column<string>(nullable: false)
                 },
@@ -38,6 +43,7 @@ namespace Configuration.Database.Migrations
                     table.ForeignKey(
                         name: "FK_Params_Assemblies_AssemblyId",
                         column: x => x.AssemblyId,
+                        principalSchema: "Service",
                         principalTable: "Assemblies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -45,6 +51,7 @@ namespace Configuration.Database.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Params_AssemblyId",
+                schema: "Service",
                 table: "Params",
                 column: "AssemblyId");
         }
@@ -52,10 +59,12 @@ namespace Configuration.Database.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Params");
+                name: "Params",
+                schema: "Service");
 
             migrationBuilder.DropTable(
-                name: "Assemblies");
+                name: "Assemblies",
+                schema: "Service");
         }
     }
 }

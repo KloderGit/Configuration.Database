@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Configuration.Database.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20200313123533_Init")]
+    [Migration("20200316102021_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,9 +32,12 @@ namespace Configuration.Database.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int?>("Type")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Assemblies");
+                    b.ToTable("Assemblies","Service");
                 });
 
             modelBuilder.Entity("Configuration.Database.Param", b =>
@@ -50,9 +53,6 @@ namespace Configuration.Database.Migrations
                     b.Property<int?>("AssemblyId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("Enviroment")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Key")
                         .IsRequired()
                         .HasColumnType("text");
@@ -65,7 +65,7 @@ namespace Configuration.Database.Migrations
 
                     b.HasIndex("AssemblyId");
 
-                    b.ToTable("Params");
+                    b.ToTable("Params","Service");
                 });
 
             modelBuilder.Entity("Configuration.Database.Param", b =>

@@ -30,9 +30,12 @@ namespace Configuration.Database.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int?>("Type")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Assemblies");
+                    b.ToTable("Assemblies","Service");
                 });
 
             modelBuilder.Entity("Configuration.Database.Param", b =>
@@ -48,9 +51,6 @@ namespace Configuration.Database.Migrations
                     b.Property<int?>("AssemblyId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("Enviroment")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Key")
                         .IsRequired()
                         .HasColumnType("text");
@@ -63,7 +63,7 @@ namespace Configuration.Database.Migrations
 
                     b.HasIndex("AssemblyId");
 
-                    b.ToTable("Params");
+                    b.ToTable("Params","Service");
                 });
 
             modelBuilder.Entity("Configuration.Database.Param", b =>

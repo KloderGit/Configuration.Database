@@ -32,11 +32,13 @@ namespace Configuration.Database
 
             modelBuilder.Entity<Assembly>(entity =>
             {
+                entity.ToTable("Assemblies", "Service");
                 entity.Property(e => e.Name).IsRequired();
             });
 
             modelBuilder.Entity<Param>(entity =>
             {
+                entity.ToTable("Params", "Service");
                 entity.Property(e => e.Key).IsRequired();
                 entity.Property(e => e.Value).IsRequired();
             });
