@@ -13,17 +13,28 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-    
     - name: Build with dotnet
       run: dotnet build --configuration Release
-    
+    - name: Pack
+      run: dotnet pack --configuration Release
     - name: Dir
       run: dir Configuration.Database\bin\Release\
+      
+#    - name: Setup Nuget.exe
+#      uses: warrenbuckley/Setup-Nuget@v1
 
+#    - name: Ng Vers
+#      run: nuget ? v
+      
+#    - name: Add Source
+#      run: nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/KloderGit/index.json" -UserName KloderGit -Password ${{ secrets.GITHUB_TOKEN }}
+
+#    - name: Push
+#      run: dotnet nuget push Configuration.Database\bin\Release\*.nupkg -k ${{ secrets.GITHUB_TOKEN }}  -s GitHub
+      
     - name: Push
-      run: dotnet nuget push Configuration.Database\bin\Release\Configuration.Database.1.0.0.nupkg -k ${{ secrets.GITHUB_TOKEN }}  -s https://nuget.pkg.github.com/KloderGit/index.json
+      run: dotnet nuget push -s https://nuget.pkg.github.com/KloderGit/index.json -k ${{ secrets.GITHUB_TOKEN }} Configuration.Database\bin\Release\*.nupkg   
