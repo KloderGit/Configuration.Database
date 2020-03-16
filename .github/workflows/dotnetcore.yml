@@ -37,4 +37,4 @@ jobs:
 #      run: dotnet nuget push Configuration.Database\bin\Release\*.nupkg -k ${{ secrets.GITHUB_TOKEN }}  -s GitHub
       
     - name: Push
-      run: dotnet nuget push Configuration.Database\bin\Release\*.nupkg -k ${{ secrets.PackageManagerToken }}  -s "https://nuget.pkg.github.com/KloderGit/index.json"
+      run: dotnet nuget push -s https://nuget.pkg.github.com/KloderGit/index.json -k ${{ secrets.GITHUB_TOKEN }} Configuration.Database\bin\Release\*.nupkg   
